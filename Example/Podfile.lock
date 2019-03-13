@@ -1,0 +1,48 @@
+PODS:
+  - SnapKit (4.2.0)
+  - SwiftyFileExplorer (1.0.0):
+    - SnapKit (~> 4.2)
+    - SwiftyFileSystem
+    - SwiftyTableFormsUI
+    - SwiftyTextStyles
+    - SwiftyUTType
+  - SwiftyFileSystem (1.0.2):
+    - SwiftyUTType
+  - SwiftyTableFormsUI (1.0.0):
+    - SnapKit (~> 4.2)
+  - SwiftyTextStyles (1.0.0)
+  - SwiftyUTType (1.0.0)
+
+DEPENDENCIES:
+  - SnapKit (~> 4.2)
+  - SwiftyFileExplorer (from `../`)
+  - SwiftyFileSystem
+  - SwiftyTableFormsUI (from `../../SwiftyTableFormsUI`)
+  - SwiftyTextStyles (from `../../SwiftyTextStyles`)
+  - SwiftyUTType
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SnapKit
+    - SwiftyFileSystem
+    - SwiftyUTType
+
+EXTERNAL SOURCES:
+  SwiftyFileExplorer:
+    :path: "../"
+  SwiftyTableFormsUI:
+    :path: "../../SwiftyTableFormsUI"
+  SwiftyTextStyles:
+    :path: "../../SwiftyTextStyles"
+
+SPEC CHECKSUMS:
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftyFileExplorer: e3934a4e60ba1688679dea4fe65ac5fde47b6111
+  SwiftyFileSystem: 30d788c05eda0d828c48dfd6b409ee0102bf65cf
+  SwiftyTableFormsUI: ad7b51f0c805b41dc043b3c2cb57ed2197786f8a
+  SwiftyTextStyles: 0fca2a15ae68f047e894560eb9c3fc1d779d1e5c
+  SwiftyUTType: ee9c7b80276bedc5f170b1149199befb411a6186
+
+PODFILE CHECKSUM: 8b655e02bcc00fb71052d21c8235d5e92300a56a
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,28 @@
+platform :ios, '9.0'
+use_frameworks!
+
+target 'SwiftyFileExplorer_Example' do
+    
+    pod 'SnapKit', '~> 4.2'
+
+    pod 'SwiftyUTType'
+    pod 'SwiftyFileSystem'
+    
+    pod 'SwiftyTextStyles', :path => '../../SwiftyTextStyles'
+    pod 'SwiftyTableFormsUI', :path => '../../SwiftyTableFormsUI'
+
+    pod 'SwiftyFileExplorer', :path => '../' 
+    
+    target 'SwiftyFileExplorer_Tests' do
+        inherit! :search_paths
+    end
+    
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '4.0'
+        end
+    end
+end

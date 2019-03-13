@@ -1,0 +1,6 @@
+framework module SwiftyTextStyles {
+  umbrella header "SwiftyTextStyles-umbrella.h"
+
+  export *
+  module * { export * }
+}

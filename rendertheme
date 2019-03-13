@@ -1,0 +1,11 @@
+#!/bin/sh
+
+dst=${BASH_SOURCE%/*}/SwiftyFileExplorer/Assets/default.theme/Contents/Resources
+src=${BASH_SOURCE%/*}/SwiftyFileExplorer/ThemeSource/default/*
+rm $dst/*
+
+for f in $src/*.svg
+do
+    bn=$(basename -- "$f")
+    convert $f -resize 120x120 -transparent white $dst/${bn%????}".png"
+done

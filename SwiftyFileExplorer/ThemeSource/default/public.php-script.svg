@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="no"?>
+<svg version="1.2" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    
+    <defs>
+        <style>
+            .tint {
+            fill: none;
+            stroke: #000;
+            stroke-width: 3;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            }
+            .text {
+            fill: #fff;
+            stroke: #fff;
+            font-family: Menlo;
+            text-anchor: middle;
+            font-size: 14px;
+            letter-spacing: 0.25;
+            }
+            .bg {
+            stroke: #000;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            }
+        </style>
+    </defs>
+    
+    <title>public.php-script</title>
+    
+    <g>
+        <path class="tint" d="M17.5,115 V5 H55 S102.5,5 102.5,50 V115 Z" />
+        <path class="tint" d="M55,5 Q85,10 80,35 Q102.5 30 102.5,60"/>
+    </g>
+    <g>
+        <path class="bg" d="M27.5,15 H57.5 V45 H27.5 Z" />
+        <text class="text" x="42.5" y="35">&lt;?&gt;</text>
+        <path class="tint" d="M65.5,15 H63.5" />
+        <path class="tint" d="M65.5,25 H72.5" />
+        <path class="tint" d="M65.5,35 H71.5" />
+    </g>
+    <g>
+        <path class="tint" d="M65.5,45 H88.5" />
+        <path class="tint" d="M27.5,55 H92.5" />
+        <path class="tint" d="M27.5,65 H92.5" />
+        <path class="tint" d="M27.5,75 H62.5" />
+    </g>
+    <g>
+        <path class="bg" d="M27.5,85 H92.5 V105 H27.5 Z" />
+        <text class="text" x="60" y="100">PHP</text>
+    </g>
+    
+</svg>

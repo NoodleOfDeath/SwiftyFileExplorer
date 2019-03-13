@@ -1,0 +1,33 @@
+{
+  "name": "SwiftyFileSystem",
+  "version": "1.0.0",
+  "summary": "Lightweight framework for working with filesystems.",
+  "description": "Lightweight framework for working with filesystems.",
+  "homepage": "https://github.com/NoodleOfDeath/SwiftyFileSystem",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "NoodleOfDeath": "git@noodleofdeath.com"
+  },
+  "source": {
+    "git": "https://github.com/NoodleOfDeath/SwiftyFileSystem.git",
+    "tag": "1.0.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "SwiftyFileSystem/Classes/**/*",
+  "resource_bundles": {
+    "SwiftyFileSystem": [
+      "SwiftyFileSystem/Assets/**/*.strings",
+      "SwiftyFileSystem/Assets/**/*.stringsdict"
+    ]
+  },
+  "dependencies": {
+    "SwiftyUTType": [
+
+    ]
+  }
+}

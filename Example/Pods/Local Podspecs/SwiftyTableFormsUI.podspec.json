@@ -1,0 +1,37 @@
+{
+  "name": "SwiftyTableFormsUI",
+  "version": "1.0.0",
+  "summary": "Lightweight framework for presenting and editing forms in tables.",
+  "description": "Lightweight framework for presenting and editing forms in tables.",
+  "homepage": "https://github.com/NoodleOfDeath/SwiftyTableFormsUI",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "NoodleOfDeath": "git@noodleofdeath.com"
+  },
+  "source": {
+    "git": "https://github.com/NoodleOfDeath/SwiftyTableFormsUI.git",
+    "tag": "1.0.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "swift_version": "4.0",
+  "pod_target_xcconfig": {
+    "SWIFT_VERSION": "4.0"
+  },
+  "source_files": "SwiftyTableFormsUI/Classes/**/*{h,m,swift}",
+  "resource_bundles": {
+    "SwiftyTableFormsUI": [
+      "SwiftyTableFormsUI/Assets/**/*.strings",
+      "SwiftyTableFormsUI/Assets/**/*.stringsdict"
+    ]
+  },
+  "dependencies": {
+    "SnapKit": [
+      "~> 4.2"
+    ]
+  }
+}

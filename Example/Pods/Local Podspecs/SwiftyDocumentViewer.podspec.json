@@ -1,0 +1,27 @@
+{
+  "name": "SwiftyDocumentViewer",
+  "version": "0.1.0",
+  "summary": "A short description of SwiftyDocumentViewer.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/NoodleOfDeath/SwiftyDocumentViewer",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "NoodleOfDeath": "git@noodleofdeath.com"
+  },
+  "source": {
+    "git": "https://github.com/NoodleOfDeath/SwiftyDocumentViewer.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "SwiftyDocumentViewer/Classes/**/*",
+  "dependencies": {
+    "SwiftyFileSystem": [
+      "~> 1.0"
+    ]
+  }
+}

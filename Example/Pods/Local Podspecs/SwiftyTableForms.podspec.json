@@ -1,0 +1,27 @@
+{
+  "name": "SwiftyTableForms",
+  "version": "1.0",
+  "summary": "Lightweight framework for presenting and editing forms.",
+  "description": "Lightweight framework for presenting and editing forms.",
+  "homepage": "https://github.com/NoodleOfDeath/SwiftyTableForms",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "NoodleOfDeath": "git@noodleofdeath.com"
+  },
+  "source": {
+    "git": "https://github.com/NoodleOfDeath/SwiftyTableForms.git",
+    "tag": "1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "SwiftyTableForms/Classes/**/*",
+  "dependencies": {
+    "SnapKit": [
+      "~> 4.2"
+    ]
+  }
+}

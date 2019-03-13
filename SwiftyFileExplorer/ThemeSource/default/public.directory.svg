@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<svg version="1.2" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    
+    <defs>
+        <style>
+            .tint {
+            fill: none;
+            stroke: #000;
+            stroke-width: 3;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            }
+            .text {
+            fill: #fff;
+            stroke: #fff;
+            font-family: Menlo;
+            text-anchor: middle;
+            font-size: 14px;
+            letter-spacing: 0.25;
+            }
+            .bg {
+            stroke: #000;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            }
+        </style>
+    </defs>
+    
+    <title>public.directory</title>
+    
+    <path class="tint" d="M15,40 H20 V30 H40 L50,35 H100 V40 H105 L100,90 H20 L15,40 H105" />
+    
+</svg>
