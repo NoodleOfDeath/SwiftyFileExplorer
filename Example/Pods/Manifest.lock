@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SwiftyFileExplorer: e3934a4e60ba1688679dea4fe65ac5fde47b6111
+  SwiftyFileExplorer: 8add6904d8acf680794df2df2f9f20c58fce3d6e
   SwiftyFileSystem: 30d788c05eda0d828c48dfd6b409ee0102bf65cf
   SwiftyTableFormsUI: ad7b51f0c805b41dc043b3c2cb57ed2197786f8a
   SwiftyTextStyles: 0fca2a15ae68f047e894560eb9c3fc1d779d1e5c

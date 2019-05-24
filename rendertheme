@@ -1,7 +1,7 @@
 #!/bin/sh
 
-dst=${BASH_SOURCE%/*}/SwiftyFileExplorer/Assets/default.theme/Contents/Resources
-src=${BASH_SOURCE%/*}/SwiftyFileExplorer/ThemeSource/default/*
+dst=${BASH_SOURCE%/*}/SwiftyFileExplorer/Assets/default.fexptheme/Contents/Resources
+src=${BASH_SOURCE%/*}/SwiftyFileExplorer/ThemeSource/default
 rm $dst/*
 
 for f in $src/*.svg

@@ -28,6 +28,8 @@ import SwiftyUTType
 import SwiftyFileSystem
 import SwiftyTextStyles
 
+extension URLFileResourceType: Codable {}
+
 extension FileExplorer {
 
     /// Specifications for a file explorer theme.
@@ -35,127 +37,19 @@ extension FileExplorer {
         
         ///
         public enum CodingKeys: String, CodingKey {
-            case basePresentation = "BasePresentation"
-            case componentPresentation = "ComponentPresentation"
-            case resourceTypePresentation = "ResourceTypePresentation"
-            case uttypePresentation = "UTTypePresentation"
+            case baseTextStyle = "BaseTextStyle"
+            case componentTextStyle = "ComponentTextStyle"
+            case resourceTypeTextStyle = "ResourceTypeTextStyle"
+            case uttypeTextStyle = "UTTypeTextStyle"
         }
         
         ///
         public enum UIComponent: String {
-            case NavigationHeaderTitle
-            case PathToolBar
-            case NavigationToolbar
-            case SectionHeader
-            case StatusBar
-        }
-        
-        /// Enumerated type representing the different componentPresentationMap of a file explorer
-        /// theme.
-        public class Presentation {
-            
-            public let font: UIFont?
-            public let paragraphStyle: NSParagraphStyle?
-            open   var textAlignment: NSTextAlignment? { return paragraphStyle?.alignment }
-            open   var lineBreakMode: NSLineBreakMode? { return paragraphStyle?.lineBreakMode }
-            public let foregroundColor: UIColor?
-            open   var textColor: UIColor? { return foregroundColor }
-            public let backgroundColor: UIColor?
-            public let ligature: Int?
-            public let kern: CGFloat?
-            public let strikethroughStyle: Int?
-            public let underlineStyle: Int?
-            public let strokeColor: UIColor?
-            public let strokeWidth: Int?
-            public let shadow: NSShadow?
-            public let textEffect: String?
-            public let attachment: NSTextAttachment?
-            public let link: URL?
-            public let baselineOffset: CGFloat?
-            public let underlineColor: UIColor?
-            public let strikethroughColor: UIColor?
-            public let obliqueness: CGFloat?
-            public let expansion: CGFloat?
-            public let writingDirection: [Int]?
-            public let verticalGlyphForm: Int?
-            public let tintColor: UIColor?
-            public let iconTintColor: UIColor?
-            public let iconAlpha: CGFloat
-            public let iconShadow: NSShadow?
-            
-            var asDict: TextStyle {
-                var dict = TextStyle()
-                dict[.font] = font
-                dict[.paragraphStyle] = paragraphStyle
-                dict[.foregroundColor] = foregroundColor
-                dict[.backgroundColor] = backgroundColor
-                dict[.ligature] = ligature
-                dict[.kern] = kern
-                dict[.strikethroughStyle] = strikethroughStyle
-                dict[.underlineStyle] = underlineStyle
-                dict[.strokeColor] = strokeColor
-                dict[.strokeWidth] = strokeWidth
-                dict[.shadow] = shadow
-                dict[.textEffect] = textEffect
-                dict[.attachment] = attachment
-                dict[.link] = link
-                dict[.baselineOffset] = baselineOffset
-                dict[.underlineColor] = underlineColor
-                dict[.strikethroughColor] = strikethroughColor
-                dict[.obliqueness] = obliqueness
-                dict[.expansion] = expansion
-                dict[.writingDirection] = writingDirection
-                dict[.verticalGlyphForm] = verticalGlyphForm
-                dict[.tintColor] = tintColor
-                dict[.iconTintColor] = iconTintColor
-                dict[.iconAlpha] = iconAlpha
-                dict[.iconShadow] = iconShadow
-                return dict
-            }
-            
-            public init?(dict: TextStyle?) {
-                guard let dict = dict else { return nil }
-                font = dict[.font] as? UIFont
-                paragraphStyle = dict[.paragraphStyle] as? NSParagraphStyle
-                foregroundColor = dict[.foregroundColor] as? UIColor ?? UIColor(dict: dict[.foregroundColor] as? TextStyle)
-                backgroundColor = dict[.backgroundColor] as? UIColor ?? UIColor(dict: dict[.backgroundColor] as? TextStyle)
-                ligature = dict[.ligature] as? Int
-                kern = dict[.kern] as? CGFloat
-                strikethroughStyle = dict[.strikethroughStyle] as? Int
-                underlineStyle = dict[.underlineStyle] as? Int
-                strokeColor = dict[.strokeColor] as? UIColor ?? UIColor(dict: dict[.strokeColor] as? TextStyle)
-                strokeWidth = dict[.strokeWidth] as? Int
-                shadow = dict[.shadow] as? NSShadow ?? NSShadow(dict: dict[.shadow] as? TextStyle)
-                textEffect = dict[.textEffect] as? String
-                attachment = dict[.attachment] as? NSTextAttachment
-                link = dict[.link] as? URL
-                baselineOffset = dict[.baselineOffset] as? CGFloat
-                underlineColor = dict[.underlineColor] as? UIColor ?? UIColor(dict: dict[.underlineColor] as? TextStyle)
-                strikethroughColor = dict[.underlineColor] as? UIColor ?? UIColor(dict: dict[.strikethroughColor] as? TextStyle)
-                obliqueness = dict[.obliqueness] as? CGFloat
-                expansion = dict[.expansion] as? CGFloat
-                writingDirection = dict[.writingDirection] as? [Int]
-                verticalGlyphForm = dict[.verticalGlyphForm] as? Int
-                tintColor = dict[.tintColor] as? UIColor ?? UIColor(dict: dict[.tintColor] as? TextStyle)
-                iconTintColor = dict[.iconTintColor] as? UIColor ?? UIColor(dict: dict[.iconTintColor] as? TextStyle)
-                iconAlpha = dict[.iconAlpha] as? CGFloat ?? 1.0
-                iconShadow = dict[.iconShadow] as? NSShadow ?? NSShadow(dict: dict[.iconShadow] as? TextStyle)
-            }
-            
-            public func merged(with presentation: Presentation?) -> Presentation? {
-                return merged(with: presentation?.asDict)
-            }
-            
-            public func merged(with otherDict: TextStyle?) -> Presentation? {
-                var dict = asDict
-                if let otherDict = otherDict {
-                    for (key, value) in otherDict {
-                        dict[key] = value
-                    }
-                }
-                return Presentation(dict: dict)
-            }
-            
+            case navigationHeaderTitle = "NavigationHeaderTitle"
+            case pathToolBar = "PathToolBar"
+            case navigationToolbar = "NavigationToolbar"
+            case sectionHeader = "SectionHeader"
+            case statusBar = "StatusBar"
         }
         
         // MARK: - Static Properties
@@ -165,7 +59,7 @@ extension FileExplorer {
             guard
                 let bundlePath = Bundle(for: FileExplorer.self).path(forResource: "SwiftyFileExplorer", ofType: "bundle"),
                 let bundle = Bundle(path: bundlePath),
-                let path = bundle.path(forResource: "default", ofType: "theme"),
+                let path = bundle.path(forResource: "default", ofType: "fexptheme"),
                 let theme = Theme(path: path) else { return nil }
             return theme
         }
@@ -180,19 +74,19 @@ extension FileExplorer {
             return map
         }
         
-        // MARK: - Presentations
+        // MARK: - TextStyles
         
-        /// Base presentation of this theme.
-        open var basePresentation: Presentation?
+        /// Base textStyle of this theme.
+        open var baseTextStyle: TextStyle?
         
-        /// UIComponent presentation map of this theme.
-        open var componentPresentationMap = [UIComponent: Presentation]()
+        /// UIComponent textStyle map of this theme.
+        open var componentTextStyleMap = [UIComponent: TextStyle]()
         
         /// Resource type map of this theme.
-        open var resourceTypePresentationMap = [URLFileResourceType: Presentation]()
+        open var resourceTypeTextStyleMap = [URLFileResourceType: TextStyle]()
         
-        /// UTType presentation of this theme.
-        open var uttypePresentationMap = [UTType: Presentation]()
+        /// UTType textStyle of this theme.
+        open var uttypeTextStyleMap = [UTType: TextStyle]()
         
         // MARK: - Thumbnails
         
@@ -205,25 +99,23 @@ extension FileExplorer {
         
         override public init?(path: String) {
             super.init(path: path)
-            if let keyValues = infoDictionary?[CodingKeys.basePresentation] as? TextStyle {
-                basePresentation = Presentation(dict: keyValues)
-            }
-            if let keyValues = infoDictionary?[CodingKeys.componentPresentation] as? [String: TextStyle] {
+            baseTextStyle = (infoDictionary?[CodingKeys.baseTextStyle] as? TextStyle)?.decoded()
+            if let keyValues = infoDictionary?[CodingKeys.componentTextStyle] as? [String: TextStyle] {
                 for (name, value) in keyValues {
                     guard let component = UIComponent(rawValue: name) else { continue }
-                    componentPresentationMap[component] = basePresentation?.merged(with: value) ?? Presentation(dict: value)
+                    componentTextStyleMap[component] = (baseTextStyle + value ?? value).decoded()
                 }
             }
-            if let keyValues = infoDictionary?[CodingKeys.resourceTypePresentation] as? [URLFileResourceType: TextStyle] {
+            if let keyValues = infoDictionary?[CodingKeys.resourceTypeTextStyle] as? [URLFileResourceType: TextStyle] {
                 for (resourceType, value) in keyValues {
-                    resourceTypePresentationMap[resourceType] = basePresentation?.merged(with: value) ?? Presentation(dict: value)
+                    resourceTypeTextStyleMap[resourceType] = (baseTextStyle + value ?? value).decoded()
                 }
             }
-            if let keyValues = infoDictionary?[CodingKeys.uttypePresentation] as? [String: TextStyle] {
+            if let keyValues = infoDictionary?[CodingKeys.uttypeTextStyle] as? [String: TextStyle] {
                 for (key, value) in keyValues {
                     let uttype = UTType(key)
                     guard uttype != .Unknown else { continue }
-                    uttypePresentationMap[uttype] = basePresentation?.merged(with: value) ?? Presentation(dict: value)
+                    uttypeTextStyleMap[uttype] = (baseTextStyle + value ?? value).decoded()
                 }
             }
         }
@@ -257,24 +149,24 @@ extension FileExplorer {
         }
         
         ///
-        open func presentation(for component: UIComponent) -> Presentation? {
-            return componentPresentationMap[component] ?? basePresentation
+        open func textStyle(for component: UIComponent) -> TextStyle? {
+            return componentTextStyleMap[component] ?? baseTextStyle
         }
         
         ///
-        open func presentation(for resourceType: URLFileResourceType) -> Presentation? {
-            return resourceTypePresentationMap[resourceType] ?? basePresentation
+        open func textStyle(for resourceType: URLFileResourceType) -> TextStyle? {
+            return resourceTypeTextStyleMap[resourceType] ?? baseTextStyle
         }
         
         ///
-        open func presentation(for uttype: UTType) -> Presentation? {
-            return uttypePresentationMap[uttype] ?? basePresentation
+        open func textStyle(for uttype: UTType) -> TextStyle? {
+            return uttypeTextStyleMap[uttype] ?? baseTextStyle
         }
         
         ///
-        open func presentation(for document: Document?) -> Presentation? {
+        open func textStyle(for document: Document?) -> TextStyle? {
             guard let document = document else { return nil }
-            return uttypePresentationMap[document.uttype] ?? basePresentation
+            return uttypeTextStyleMap[document.uttype] ?? baseTextStyle
         }
 
     }

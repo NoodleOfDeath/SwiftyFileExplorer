@@ -25,6 +25,7 @@
 import UIKit
 
 import SwiftyFileSystem
+import SwiftyTextStyles
 
 @objc
 public protocol DocumentViewControllerDelegate: class {
@@ -61,8 +62,6 @@ open class DocumentViewController: UIViewController {
             contentsDidLoad()
         }
     }
-    
-    open var colorScheme: ColorScheme?
     
     ///
     open var focusFrame: CGRect? {

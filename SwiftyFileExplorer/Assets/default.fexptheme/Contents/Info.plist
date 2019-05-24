@@ -18,7 +18,7 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>BasePresentation</key>
+	<key>BaseTextStyle</key>
 	<dict>
 		<key>NSFont</key>
 		<dict/>
@@ -71,7 +71,7 @@
 		<key>CTVericalForms</key>
 		<dict/>
 	</dict>
-	<key>ResourceTypePresentation</key>
+	<key>ResourceTypeTextStyle</key>
 	<dict>
 		<key>NSURLFileResourceTypeDirectory</key>
 		<dict>
@@ -214,7 +214,7 @@
 			<dict/>
 		</dict>
 	</dict>
-	<key>UTTypePresentation</key>
+	<key>UTTypeTextStyle</key>
 	<dict>
 		<key>public.html</key>
 		<dict>
@@ -457,7 +457,7 @@
 			<dict/>
 		</dict>
 	</dict>
-	<key>ComponentPresentation</key>
+	<key>ComponentTextStyle</key>
 	<dict>
 		<key>NavigationHeaderTitle</key>
 		<dict>

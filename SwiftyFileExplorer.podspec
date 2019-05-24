@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
 
   s.resource_bundles = {
       'SwiftyFileExplorer' => [
-          'SwiftyFileExplorer/Assets/**/*.theme',
+          'SwiftyFileExplorer/Assets/**/*.fexptheme',
           'SwiftyFileExplorer/Assets/**/*.strings',
           'SwiftyFileExplorer/Assets/**/*.stringsdict',
       ]

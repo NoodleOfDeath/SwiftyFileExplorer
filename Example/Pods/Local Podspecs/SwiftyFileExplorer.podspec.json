@@ -25,7 +25,7 @@
   "source_files": "SwiftyFileExplorer/Classes/**/*{h,m,swift}",
   "resource_bundles": {
     "SwiftyFileExplorer": [
-      "SwiftyFileExplorer/Assets/**/*.theme",
+      "SwiftyFileExplorer/Assets/**/*.fexptheme",
       "SwiftyFileExplorer/Assets/**/*.strings",
       "SwiftyFileExplorer/Assets/**/*.stringsdict"
     ]

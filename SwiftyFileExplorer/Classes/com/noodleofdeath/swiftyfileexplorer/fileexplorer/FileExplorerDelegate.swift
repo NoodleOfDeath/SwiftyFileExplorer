@@ -28,7 +28,7 @@ import SwiftyFileSystem
 
 /// Specifies the required event handler methods for an object that
 /// will delegate one or more `FileExplorer` instances.
-@objc(FileExplorerDelegate)
+@objc
 public protocol FileExplorerDelegate: class  {
     
     // MARK: - Configuration Methods

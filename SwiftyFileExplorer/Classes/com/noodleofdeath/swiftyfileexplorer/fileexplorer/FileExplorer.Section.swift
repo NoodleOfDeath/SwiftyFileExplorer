@@ -68,8 +68,8 @@ extension FileExplorer {
         /// Header view of this section.
         open lazy var headerView: UIView = {
             let view = UIView()
-            let presentation = fileExplorer?.theme?.presentation(for: .SectionHeader)
-            view.backgroundColor = presentation?.backgroundColor ?? UIColor(0xEEEEEE)
+            let textStyle = fileExplorer?.theme?.textStyle(for: .sectionHeader)
+            view.backgroundColor = textStyle?.backgroundColor ?? UIColor(0xEEEEEE)
             view.addSubview(headerViewStackView)
             headerViewStackView.snp.makeConstraints { (dims) in
                 dims.top.equalTo(view)
@@ -91,23 +91,23 @@ extension FileExplorer {
         /// Header view label of this section.
         fileprivate lazy var headerViewTitleLabel: UILabel = {
             let label = UILabel()
-            let presentation = fileExplorer?.theme?.presentation(for: .SectionHeader)
-            label.textAlignment = presentation?.textAlignment ?? .left
-            label.lineBreakMode = presentation?.lineBreakMode ?? .byTruncatingMiddle
+            let textStyle = fileExplorer?.theme?.textStyle(for: .sectionHeader)
+            label.textAlignment = textStyle?.textAlignment ?? .left
+            label.lineBreakMode = textStyle?.lineBreakMode ?? .byTruncatingMiddle
             label.text = String(format: "%@ (%@)", title, FileSystem.localizedString("%d items", with: documents.count))
-            label.font = presentation?.font ?? .boldSystemFont(ofSize: UIFont.systemFontSize)
-            label.textColor = presentation?.textColor ?? UIColor(0x444444)
+            label.font = textStyle?.font ?? .boldSystemFont(ofSize: UIFont.systemFontSize)
+            label.textColor = textStyle?.textColor ?? UIColor(0x444444)
             return label
         }()
         
         /// Header view label of this section.
         fileprivate lazy var headerViewSubtitleLabel: UILabel = {
             let label = UILabel()
-            let presentation = fileExplorer?.theme?.presentation(for: .SectionHeader)
-            label.textAlignment = presentation?.textAlignment ?? .left
-            label.lineBreakMode = presentation?.lineBreakMode ?? .byTruncatingMiddle
-            label.font = presentation?.font ?? .boldSystemFont(ofSize: UIFont.systemFontSize)
-            label.textColor = presentation?.textColor ?? UIColor(0x444444)
+            let textStyle = fileExplorer?.theme?.textStyle(for: .sectionHeader)
+            label.textAlignment = textStyle?.textAlignment ?? .left
+            label.lineBreakMode = textStyle?.lineBreakMode ?? .byTruncatingMiddle
+            label.font = textStyle?.font ?? .boldSystemFont(ofSize: UIFont.systemFontSize)
+            label.textColor = textStyle?.textColor ?? UIColor(0x444444)
             label.snp.makeConstraints { (dims) in
                 dims.height.equalTo(0.0)
             }

@@ -27,7 +27,7 @@ import UIKit
 import SnapKit
 
 /// Specifications for a `FileExplorerTableViewCell` delegate.
-@objc(FileExplorerTableViewCellDelegate)
+@objc
 public protocol FileExplorerTableViewCellDelegate: class {
     
     /// Called when a table view cell is tapped by the user.
@@ -46,7 +46,7 @@ public protocol FileExplorerTableViewCellDelegate: class {
 
 /// Custom table view cell to be displayed by a file explorer.
 /// Usually displays file/directory name.
-@objc(FileExplorerTableViewCell)
+@objc
 open class FileExplorerTableViewCell: UITableViewCell {
 
     // MARK: - Instance Properties

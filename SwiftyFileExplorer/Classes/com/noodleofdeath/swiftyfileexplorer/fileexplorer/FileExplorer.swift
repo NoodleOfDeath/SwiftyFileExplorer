@@ -26,12 +26,13 @@ import UIKit
 
 import SnapKit
 import SwiftyFileSystem
+import SwiftyTextStyles
 import SwiftyTableFormsUI
 
 /// Provides a view controller implementation that allows for the browsing,
 /// modification, and selection of fileURLs, directories, and/or symbolic links
 /// using an intuitive table view display.
-@objc(FileExplorer)
+@objc
 open class FileExplorer: UIViewController {
     
     public typealias This = FileExplorer
@@ -322,11 +323,19 @@ open class FileExplorer: UIViewController {
         return stackView
     }()
     
+    fileprivate lazy var pathStatusStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.addArrangedSubview(pathBarView)
+        stackView.addArrangedSubview(statusBar)
+        return stackView
+    }()
+    
     /// Path toolbar view of this file explorer.
     fileprivate lazy var pathBarView: UIView = {
         let view = UIView()
-        let presentation = theme?.presentation(for: .PathToolBar)
-        view.backgroundColor = presentation?.backgroundColor ?? UIColor(0xEEEEEE)
+        let textStyle = theme?.textStyle(for: .pathToolBar)
+        view.backgroundColor = textStyle?.backgroundColor ?? UIColor(0xEEEEEE)
         view.addConstrainedSubview(pathBarScrollView)
         view.snp.makeConstraints({ (dims) in
             dims.height.equalTo(25.0)
@@ -356,8 +365,8 @@ open class FileExplorer: UIViewController {
     /// Status bar view of this file explorer.
     fileprivate lazy var statusBar: UIView = {
         let view = UIView()
-        let presentation = theme?.presentation(for: .StatusBar)
-        view.backgroundColor = presentation?.backgroundColor ?? UIColor(0xAAAAAA)
+        let textStyle = theme?.textStyle(for: .statusBar)
+        view.backgroundColor = textStyle?.backgroundColor ?? UIColor(0xAAAAAA)
         let stackView = UIStackView()
         stackView.addArrangedSubview(statusBarLabel)
         view.addSubview(stackView)
@@ -371,9 +380,9 @@ open class FileExplorer: UIViewController {
     /// Status bar label of this file explorer.
     fileprivate lazy var statusBarLabel: UILabel = {
         let label = UILabel()
-        let presentation = theme?.presentation(for: .StatusBar)
-        label.textAlignment = presentation?.textAlignment ?? .center
-        label.lineBreakMode = presentation?.lineBreakMode ?? .byTruncatingMiddle
+        let textStyle = theme?.textStyle(for: .statusBar)
+        label.textAlignment = textStyle?.textAlignment ?? .center
+        label.lineBreakMode = textStyle?.lineBreakMode ?? .byTruncatingMiddle
         return label
     }()
     
@@ -483,8 +492,7 @@ open class FileExplorer: UIViewController {
         tableView.sectionIndexMinimumDisplayRowCount = sectionIndexMinimumDisplayRowCount
         
         mainStackView.addArrangedSubview(tableView)
-        mainStackView.addArrangedSubview(pathBarView)
-        mainStackView.addArrangedSubview(statusBar)
+        mainStackView.addArrangedSubview(pathStatusStackView)
         
         view.addConstrainedSubview(mainStackView)
         
@@ -568,25 +576,26 @@ extension FileExplorer: UITableViewDataSource {
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: String(FileExplorerTableViewCell.hash()), for: indexPath)
+    }
+    
+    open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        let _cell = tableView.dequeueReusableCell(withIdentifier: String(FileExplorerTableViewCell.hash()),
-                                                  for: indexPath)
-        
-        guard let cell = _cell as? FileExplorerTableViewCell else { return _cell }
+        guard let cell = cell as? FileExplorerTableViewCell else { return }
         
         let document = self.document(for: indexPath)
         
-        let presentation = document.isHidden() ?
-            theme?.presentation(for: .hidden) :
-            theme?.presentation(for: document.resourceType)?.merged(with: theme?.presentation(for: document.absoluteResource))
+        let textStyle = document.isHidden() ?
+            theme?.textStyle(for: .hidden) :
+            theme?.textStyle(for: document.resourceType) + theme?.textStyle(for: document.absoluteResource)
         
         cell.delegate = self
         
         cell.title = document.displayName
-        cell.titleColor = presentation?.textColor ?? (document.isHidden() ? .lightGray : .black)
-        cell.iconTintColor = presentation?.iconTintColor ?? .black
-        cell.iconAlpha = presentation?.iconAlpha ?? 1.0
-        cell.iconShadow = presentation?.iconShadow ?? NSShadow()
+        cell.titleColor = textStyle?.textColor ?? (document.isHidden() ? .lightGray : .black)
+        cell.iconTintColor = textStyle?.iconTintColor ?? .black
+        cell.iconAlpha = textStyle?.iconAlpha ?? 1.0
+        cell.iconShadow = textStyle?.iconShadow ?? NSShadow()
         
         switch document.absoluteResource.resourceType {
             
@@ -614,8 +623,6 @@ extension FileExplorer: UITableViewDataSource {
             break
             
         }
-        
-        return cell
         
     }
     
