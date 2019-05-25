@@ -1,6 +1,0 @@
-framework module SwiftyTableFormsUI {
-  umbrella header "SwiftyTableFormsUI-umbrella.h"
-
-  export *
-  module * { export * }
-}

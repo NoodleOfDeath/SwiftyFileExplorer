@@ -1,6 +1,0 @@
-framework module SwiftyFileExplorer {
-  umbrella header "SwiftyFileExplorer-umbrella.h"
-
-  export *
-  module * { export * }
-}

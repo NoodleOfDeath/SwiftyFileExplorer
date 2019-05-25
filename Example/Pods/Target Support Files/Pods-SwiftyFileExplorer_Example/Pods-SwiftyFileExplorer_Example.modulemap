@@ -1,6 +1,0 @@
-framework module Pods_SwiftyFileExplorer_Example {
-  umbrella header "Pods-SwiftyFileExplorer_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}
